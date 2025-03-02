@@ -94,7 +94,7 @@ const RegisterScreen: React.FC<AuthNavProps<"Register">> = ({ navigation }) => {
             mode="outlined"
             secureTextEntry={!password.show}
             right={{
-              icon: password.show ? "eye-off" : "eye",
+              icon: password.show ? "eye-slash" : "eye",
               onPress: () =>
                 setPassword({ value: password.value, show: !password.show }),
             }}
@@ -110,7 +110,7 @@ const RegisterScreen: React.FC<AuthNavProps<"Register">> = ({ navigation }) => {
             mode="outlined"
             secureTextEntry={!confirmPassword.show}
             right={{
-              icon: confirmPassword.show ? "eye-off" : "eye",
+              icon: confirmPassword.show ? "eye-slash" : "eye",
               onPress: () =>
                 setConfirmPassword({
                   value: confirmPassword.value,

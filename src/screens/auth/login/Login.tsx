@@ -82,7 +82,7 @@ const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
             mode="outlined"
             secureTextEntry={!showPassword}
             right={{
-              icon: showPassword ? "eye-off" : "eye",
+              icon: showPassword ? "eye-slash" : "eye",
               onPress: () => setShowPassword(!showPassword),
             }}
           />
