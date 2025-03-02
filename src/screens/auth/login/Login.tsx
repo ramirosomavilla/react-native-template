@@ -41,7 +41,9 @@ const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
         ]}
       >
         <View style={styles.logoContainer}>
-          <Text style={[styles.title, { color: colors.primary }]}>Mi App</Text>
+          <Text style={[styles.title, { color: colors.primary }]}>
+            React Native Template App
+          </Text>
         </View>
 
         <View style={styles.formContainer}>

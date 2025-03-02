@@ -15,41 +15,60 @@ const mockToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockToken123456789";
 
 const authService = {
   login: async (credentials: LoginRequest) => {
+    let response: ApiResponse<{ user: User; token: string }> = {
+      data: {
+        user: mockUser,
+        token: "",
+      },
+      success: false,
+      message: "Error al iniciar sesión",
+    };
     // Mocked login response
     if (
       credentials.email === "usuario@ejemplo.com" &&
       credentials.password === "123456"
     ) {
-      return {
+      response = {
         data: {
           user: mockUser,
           token: mockToken,
         },
-        message: "Login exitoso",
         success: true,
+        message: "Login exitoso",
       };
     }
-
-    const response = await apiClient.post<
-      ApiResponse<{ user: User; token: string }>
-    >("/auth/login", credentials);
+    // Here you can add your own API call to login a user
+    // const response = await apiClient.post<
+    //   ApiResponse<{ user: User; token: string }>
+    // >("/auth/login", credentials);
 
     // Store token in AsyncStorage
-    if (response.data.success) {
-      storeData("authToken", response.data.data.token);
+    if (response.success) {
+      await storeData("authToken", response.data.token);
     }
 
     return response.data;
   },
 
   register: async (userData: RegisterRequest) => {
-    const response = await apiClient.post<
-      ApiResponse<{ user: User; token: string }>
-    >("/auth/register", userData);
+    // Mocked register response
+    const response = {
+      data: {
+        user: mockUser,
+        token: mockToken,
+      },
+      success: true,
+      message: "Registro exitoso",
+    };
+
+    // Here you can add your own API call to register a new user
+    // const response = await apiClient.post<
+    //   ApiResponse<{ user: User; token: string }>
+    // >("/auth/register", userData);
 
     // Store token in AsyncStorage
-    if (response.data.success) {
-      storeData("authToken", response.data.data.token);
+    if (response.success) {
+      await storeData("authToken", response.data.token);
     }
 
     return response.data;

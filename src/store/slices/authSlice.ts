@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { AuthState, LoginRequest, User } from "../../types";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import authService from "../../api/services/authService";
+import { AuthState, LoginRequest, RegisterRequest, User } from "../../types";
 
 const initialState: AuthState = {
   user: null,
@@ -15,10 +15,24 @@ export const login = createAsyncThunk(
   async (credentials: LoginRequest, { rejectWithValue }) => {
     try {
       const response = await authService.login(credentials);
-      return response.data;
+      return response;
     } catch (error: any) {
       return rejectWithValue(
         error.response?.data?.message || "Error al iniciar sesión"
+      );
+    }
+  }
+);
+
+export const register = createAsyncThunk(
+  "auth/register",
+  async (credentials: RegisterRequest, { rejectWithValue }) => {
+    try {
+      const response = await authService.register(credentials);
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(
+        error.response?.data?.message || "Error al registrarse"
       );
     }
   }
@@ -54,6 +68,23 @@ export const authSlice = createSlice({
         }
       )
       .addCase(login.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(register.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(
+        register.fulfilled,
+        (state, action: PayloadAction<{ user: User; token: string }>) => {
+          state.isLoading = false;
+          state.isAuthenticated = true;
+          state.user = action.payload.user;
+          state.token = action.payload.token;
+        }
+      )
+      .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
       });
