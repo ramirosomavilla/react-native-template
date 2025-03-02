@@ -1,17 +1,7 @@
 import apiClient from "../config";
 import { ApiResponse, LoginRequest, RegisterRequest, User } from "../../types";
 import { storeData } from "../../utils/storage";
-
-// Usuario de ejemplo para simular respuestas
-const mockUser: User = {
-  id: "mock-user-id-123",
-  email: "usuario@ejemplo.com",
-  name: "Usuario Ejemplo",
-  // Añade otros campos según tu tipo User
-};
-
-// Token de ejemplo
-const mockToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockToken123456789";
+import { mockToken, mockUser } from "../../constants/mockedData";
 
 const authService = {
   login: async (credentials: LoginRequest) => {

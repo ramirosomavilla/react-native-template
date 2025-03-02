@@ -5,6 +5,7 @@ import { ROUTES } from "./routes";
 import TabNavigator from "./TabNavigator";
 import ProfileScreen from "../screens/home/Profile";
 import SettingsScreen from "../screens/settings/Settings";
+import { mockUser } from "../constants/mockedData";
 
 const Stack = createStackNavigator<MainParamList>();
 
@@ -18,7 +19,13 @@ const MainNavigator: React.FC = () => {
       />
       <Stack.Screen
         name={ROUTES.PROFILE}
-        component={ProfileScreen}
+        component={() => (
+          <ProfileScreen
+            user={mockUser}
+            onEditProfile={() => {}}
+            onSignOut={() => {}}
+          />
+        )}
         options={({ route }) => ({ title: `Perfil de ${route.params.userId}` })}
       />
       <Stack.Screen

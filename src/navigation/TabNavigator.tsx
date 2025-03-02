@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { TabParamList } from "../types";
+import { TabParamList, User } from "../types";
 import { ROUTES } from "./routes";
 import HomeScreen from "../screens/home/Home";
 import Icon from "react-native-vector-icons/FontAwesome6";
@@ -9,6 +9,7 @@ import ProfileScreen from "../screens/home/Profile";
 import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "../screens/home/home-styles";
 import { ToggleThemeButton } from "../components/ToggleThemeButton";
+import { mockUser } from "../constants/mockedData";
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -17,6 +18,7 @@ const TabNavigator: React.FC = () => {
 
   return (
     <Tab.Navigator
+      initialRouteName={ROUTES.TAB_HOME}
       screenOptions={{
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.text,
@@ -28,9 +30,15 @@ const TabNavigator: React.FC = () => {
     >
       <Tab.Screen
         name={ROUTES.TAB_PROFILE}
-        component={ProfileScreen}
+        component={() => (
+          <ProfileScreen
+            user={mockUser}
+            onEditProfile={() => {}}
+            onSignOut={() => {}}
+          />
+        )}
         options={{
-          title: "Profile",
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Icon name="circle-user" color={color} size={size} />
           ),
@@ -65,7 +73,7 @@ const TabNavigator: React.FC = () => {
         name={ROUTES.TAB_EXPLORE}
         component={HomeScreen}
         options={{
-          title: "Explore",
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Icon name="magnifying-glass" color={color} size={size} />
           ),
