@@ -1,3 +1,5 @@
-export default function Profile() {
-  return <div>Profile</div>;
+import { View } from "react-native";
+
+export default function ProfileScreen() {
+  return <View>Profile</View>;
 }

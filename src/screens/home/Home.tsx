@@ -1,48 +1,56 @@
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  RefreshControl,
-  Image,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { ROUTES } from "../../navigation/routes";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useDispatch, useSelector } from "react-redux";
-import { styles } from "./styles";
-import { ItemData } from "../../types/product.types";
-// Import your actions and selectors
-// import { fetchProducts } from '../../store/slices/productSlice';
-// import { RootState } from '../../store';
+import React from "react";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
+import { styles } from "./home-styles";
+import { useTheme } from "../../hooks/useTheme";
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
-
-  const renderProduct = ({ item }: { item: ItemData }) => (
-    <TouchableOpacity style={styles.productCard}>
-      <Image
-        source={{ uri: item.image }}
-        style={styles.productImage}
-        resizeMode="cover"
-      />
-      <View style={styles.productInfo}>
-        <Text style={styles.productTitle}>{item.title}</Text>
-        <Text style={styles.productPrice}>${item.price.toFixed(2)}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-
+  const { colors } = useTheme();
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Template</Text>
-        <TouchableOpacity>
-          <Text style={styles.cartButton}>🛒</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={[styles.heroTitle, { color: colors.primary }]}>
+          Your Dream App Starts Here
+        </Text>
+        <Text style={[styles.heroSubtitle, { color: colors.secondary }]}>
+          Create stunning, high-performance apps effortlessly.
+        </Text>
+
+        <View style={[styles.card, { backgroundColor: colors.card }]}>
+          <Ionicons
+            name="color-palette-outline"
+            size={40}
+            color={colors.primary}
+            style={styles.icon}
+          />
+          <Text style={styles.cardTitle}>Eye-Catching Design</Text>
+          <Text style={styles.cardText}>
+            Vibrant colors and sleek animations that captivate your users at
+            first sight.
+          </Text>
+          <TouchableOpacity style={styles.ctaButton}>
+            <Text style={styles.ctaButtonText}>Try It Now</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={[styles.card, { backgroundColor: colors.card }]}>
+          <Ionicons
+            name="flash-outline"
+            size={40}
+            color={colors.primary}
+            style={styles.icon}
+          />
+          <Text style={styles.cardTitle}>Lightning Fast</Text>
+          <Text style={styles.cardText}>
+            Get your app up and running in minutes with zero hassle.
+          </Text>
+          <TouchableOpacity style={styles.ctaButton}>
+            <Text style={styles.ctaButtonText}>Get Started</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
