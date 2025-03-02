@@ -1,28 +1,28 @@
 export const colors = {
-  primary: "#3498db",
-  secondary: "#2ecc71",
-  accent: "#f1c40f",
-  error: "#e74c3c",
-  warning: "#f39c12",
-  info: "#3498db",
-  success: "#2ecc71",
-  background: "#ffffff",
-  card: "#f8f9fa",
-  text: "#333333",
-  border: "#dddddd",
-  notification: "#ff3b30",
+  primary: "#FCBE0B", // Dorado vibrante
+  secondary: "#F78C1E", // Naranja intenso
+  accent: "#E36414", // Naranja quemado
+  error: "#D72638", // Rojo fuerte
+  warning: "#FF8800", // Naranja brillante
+  info: "#F4C95D", // Dorado pastel
+  success: "#EBA83A", // Naranja suave dorado
+  background: "#FFF8E1", // Amarillo crema claro
+  card: "#FFECB3", // Beige dorado
+  text: "#5C3D00", // Marrón oscuro
+  border: "#D98E04", // Dorado oscuro
+  notification: "#B45309", // Naranja oscuro
 
   // Dark mode colors
-  darkPrimary: "#2980b9",
-  darkSecondary: "#27ae60",
-  darkAccent: "#f39c12",
-  darkError: "#c0392b",
-  darkWarning: "#d35400",
-  darkInfo: "#2980b9",
-  darkSuccess: "#27ae60",
-  darkBackground: "#121212",
-  darkCard: "#1e1e1e",
-  darkText: "#f5f5f5",
-  darkBorder: "#333333",
-  darkNotification: "#ff453a",
+  darkPrimary: "#C29205", // Dorado envejecido
+  darkSecondary: "#A45C00", // Naranja oscuro tostado
+  darkAccent: "#8C3E00", // Cobre profundo
+  darkError: "#991B1B", // Rojo oscuro
+  darkWarning: "#C76D00", // Ámbar oscuro
+  darkInfo: "#B7852A", // Dorado apagado
+  darkSuccess: "#9A5A0C", // Marrón dorado oscuro
+  darkBackground: "#1A1200", // Marrón negro
+  darkCard: "#332100", // Marrón muy oscuro
+  darkText: "#FFD369", // Amarillo cálido
+  darkBorder: "#8A5A00", // Bronce oscuro
+  darkNotification: "#7C2D12", // Rojo marrón
 };
