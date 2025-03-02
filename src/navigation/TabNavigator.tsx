@@ -30,20 +30,21 @@ const TabNavigator: React.FC = () => {
     >
       <Tab.Screen
         name={ROUTES.TAB_PROFILE}
-        component={() => (
-          <ProfileScreen
-            user={mockUser}
-            onEditProfile={() => {}}
-            onSignOut={() => {}}
-          />
-        )}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Icon name="circle-user" color={color} size={size} />
           ),
         }}
-      />
+      >
+        {() => (
+          <ProfileScreen
+            user={mockUser}
+            onEditProfile={() => {}}
+            onSignOut={() => {}}
+          />
+        )}
+      </Tab.Screen>
       <Tab.Screen
         name={ROUTES.TAB_HOME}
         component={HomeScreen}

@@ -19,15 +19,16 @@ const MainNavigator: React.FC = () => {
       />
       <Stack.Screen
         name={ROUTES.PROFILE}
-        component={() => (
+        options={({ route }) => ({ title: `Perfil de ${route.params.userId}` })}
+      >
+        {() => (
           <ProfileScreen
             user={mockUser}
             onEditProfile={() => {}}
             onSignOut={() => {}}
           />
         )}
-        options={({ route }) => ({ title: `Perfil de ${route.params.userId}` })}
-      />
+      </Stack.Screen>
       <Stack.Screen
         name={ROUTES.SETTINGS}
         component={SettingsScreen}
