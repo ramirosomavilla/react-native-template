@@ -16,7 +16,6 @@ import Button from "../../../components/Button";
 import TextInput from "../../../components/TextInput";
 import { useTheme } from "../../../hooks/useTheme";
 import styles from "./styles";
-import { ToggleThemeButton } from "../../../components/ToggleThemeButton";
 
 const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
   const [email, setEmail] = useState("usuario@ejemplo.com");
@@ -48,8 +47,6 @@ const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
             React Native Template App
           </Text>
         </View>
-
-        <ToggleThemeButton />
 
         <View style={styles.formContainer}>
           {error && <Text style={styles.errorText}>{error}</Text>}
