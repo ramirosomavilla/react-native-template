@@ -16,8 +16,8 @@ import { useTheme } from "../../../hooks/useTheme";
 import styles from "./styles";
 
 const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("usuario@ejemplo.com");
+  const [password, setPassword] = useState("123456");
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch();
   const { isLoading, error } = useAppSelector((state) => state.auth);

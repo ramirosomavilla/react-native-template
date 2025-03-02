@@ -4,6 +4,7 @@ import { AuthParamList } from "../types";
 import { ROUTES } from "./routes";
 import LoginScreen from "../screens/auth/login/Login";
 import RegisterScreen from "../screens/auth/register/Register";
+import { colors } from "../styles/colors";
 
 const Stack = createStackNavigator<AuthParamList>();
 
@@ -14,7 +15,7 @@ const AuthNavigator: React.FC = () => {
       screenOptions={{
         headerShown: true,
         headerStyle: {
-          backgroundColor: "#f4511e",
+          backgroundColor: colors.primary,
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
