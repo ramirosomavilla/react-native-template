@@ -6,9 +6,8 @@ import HomeScreen from "../screens/home/Home";
 import Icon from "react-native-vector-icons/FontAwesome6";
 import { useTheme } from "../hooks/useTheme";
 import ProfileScreen from "../screens/home/Profile";
-import { SafeAreaView, TouchableOpacity, View } from "react-native";
+import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "../screens/home/home-styles";
-import { Text } from "react-native-paper";
 
 const Tab = createBottomTabNavigator<TabParamList>();
 

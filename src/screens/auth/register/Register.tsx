@@ -6,12 +6,14 @@ import {
   Text,
   View,
 } from "react-native";
-import { Button, TextInput } from "react-native-paper";
+
 import { useTheme } from "../../../hooks/useTheme";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { register } from "../../../store/slices/authSlice";
 import { AuthNavProps } from "../../../types";
 import styles from "./styles";
+import TextInput from "../../../components/TextInput";
+import Button from "../../../components/Button";
 
 const RegisterScreen: React.FC<AuthNavProps<"Register">> = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -91,14 +93,11 @@ const RegisterScreen: React.FC<AuthNavProps<"Register">> = ({ navigation }) => {
             style={styles.input}
             mode="outlined"
             secureTextEntry={!password.show}
-            right={
-              <TextInput.Icon
-                icon={password.show ? "eye-off" : "eye"}
-                onPress={() =>
-                  setPassword({ value: password.value, show: !password.show })
-                }
-              />
-            }
+            right={{
+              icon: password.show ? "eye-off" : "eye",
+              onPress: () =>
+                setPassword({ value: password.value, show: !password.show }),
+            }}
           />
 
           <TextInput
@@ -110,17 +109,14 @@ const RegisterScreen: React.FC<AuthNavProps<"Register">> = ({ navigation }) => {
             style={styles.input}
             mode="outlined"
             secureTextEntry={!confirmPassword.show}
-            right={
-              <TextInput.Icon
-                icon={confirmPassword.show ? "eye-off" : "eye"}
-                onPress={() =>
-                  setConfirmPassword({
-                    value: confirmPassword.value,
-                    show: !confirmPassword.show,
-                  })
-                }
-              />
-            }
+            right={{
+              icon: confirmPassword.show ? "eye-off" : "eye",
+              onPress: () =>
+                setConfirmPassword({
+                  value: confirmPassword.value,
+                  show: !confirmPassword.show,
+                }),
+            }}
           />
 
           <Button

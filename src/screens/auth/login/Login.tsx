@@ -7,7 +7,6 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { TextInput, Button } from "react-native-paper";
 import { AuthNavProps } from "../../../types";
 import { ROUTES } from "../../../navigation/routes";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
@@ -16,6 +15,9 @@ import { login } from "../../../store/slices/authSlice";
 import styles from "./styles";
 import { useTheme } from "../../../hooks/useTheme";
 import { useTheme as useThemeContext } from "../../../contexts/ThemeContext";
+import Button from "../../../components/Button";
+import TextInput from "../../../components/TextInput";
+import Icon from "react-native-vector-icons/FontAwesome6";
 
 const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
   const [email, setEmail] = useState("usuario@ejemplo.com");
@@ -50,10 +52,15 @@ const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
         </View>
         <Button
           onPress={() => toggleTheme()}
+          style={{ backgroundColor: colors.background }}
           loading={isLoading}
           disabled={isLoading}
         >
-          {theme.dark ? "Light Mode" : "Dark Mode"}
+          {theme.dark ? (
+            <Icon name="sun" size={24} />
+          ) : (
+            <Icon name="moon" size={24} />
+          )}
         </Button>
 
         <View style={styles.formContainer}>
@@ -63,7 +70,6 @@ const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
             label="Correo electrónico"
             value={email}
             onChangeText={setEmail}
-            style={styles.input}
             mode="outlined"
             keyboardType="email-address"
             autoCapitalize="none"
@@ -73,15 +79,12 @@ const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
             label="Contraseña"
             value={password}
             onChangeText={setPassword}
-            style={styles.input}
             mode="outlined"
             secureTextEntry={!showPassword}
-            right={
-              <TextInput.Icon
-                icon={showPassword ? "eye-off" : "eye"}
-                onPress={() => setShowPassword(!showPassword)}
-              />
-            }
+            right={{
+              icon: showPassword ? "eye-off" : "eye",
+              onPress: () => setShowPassword(!showPassword),
+            }}
           />
 
           <Button
