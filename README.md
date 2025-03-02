@@ -94,7 +94,7 @@ react-native-template/
 
 1. Clone this repository:
    ```sh
-   git clone https://github.com/yourusername/react-native-template.git
+   git clone https://github.com/ramirosomavilla/react-native-template.git
    ```
 2. Install dependencies:
    ```sh
