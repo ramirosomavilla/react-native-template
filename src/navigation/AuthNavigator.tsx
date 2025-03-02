@@ -4,11 +4,12 @@ import { AuthParamList } from "../types";
 import { ROUTES } from "./routes";
 import LoginScreen from "../screens/auth/login/Login";
 import RegisterScreen from "../screens/auth/register/Register";
-import { colors } from "../styles/colors";
+import { useTheme } from "../hooks/useTheme";
 
 const Stack = createStackNavigator<AuthParamList>();
 
 const AuthNavigator: React.FC = () => {
+  const { colors } = useTheme();
   return (
     <Stack.Navigator
       initialRouteName={ROUTES.LOGIN}
@@ -26,12 +27,12 @@ const AuthNavigator: React.FC = () => {
       <Stack.Screen
         name={ROUTES.LOGIN}
         component={LoginScreen}
-        options={{ title: "Iniciar Sesión" }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name={ROUTES.REGISTER}
         component={RegisterScreen}
-        options={{ title: "Registrarse" }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

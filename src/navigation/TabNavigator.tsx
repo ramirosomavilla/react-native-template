@@ -30,7 +30,7 @@ const TabNavigator: React.FC = () => {
         name={ROUTES.TAB_PROFILE}
         component={ProfileScreen}
         options={{
-          title: "Perfil",
+          title: "Profile",
           tabBarIcon: ({ color, size }) => (
             <Icon name="circle-user" color={color} size={size} />
           ),
@@ -40,7 +40,7 @@ const TabNavigator: React.FC = () => {
         name={ROUTES.TAB_HOME}
         component={HomeScreen}
         options={{
-          title: "Inicio",
+          title: "Home",
           tabBarIcon: ({ color, size }) => (
             <Icon name="house" color={color} size={size} />
           ),
@@ -65,7 +65,7 @@ const TabNavigator: React.FC = () => {
         name={ROUTES.TAB_EXPLORE}
         component={HomeScreen}
         options={{
-          title: "Explorar",
+          title: "Explore",
           tabBarIcon: ({ color, size }) => (
             <Icon name="magnifying-glass" color={color} size={size} />
           ),

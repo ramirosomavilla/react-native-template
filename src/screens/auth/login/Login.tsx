@@ -12,8 +12,10 @@ import { AuthNavProps } from "../../../types";
 import { ROUTES } from "../../../navigation/routes";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { login } from "../../../store/slices/authSlice";
-import { useTheme } from "../../../hooks/useTheme";
+
 import styles from "./styles";
+import { useTheme } from "../../../hooks/useTheme";
+import { useTheme as useThemeContext } from "../../../contexts/ThemeContext";
 
 const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
   const [email, setEmail] = useState("usuario@ejemplo.com");
@@ -22,6 +24,7 @@ const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
   const dispatch = useAppDispatch();
   const { isLoading, error } = useAppSelector((state) => state.auth);
   const { colors } = useTheme();
+  const { toggleTheme, theme } = useThemeContext();
 
   const handleLogin = () => {
     if (email.trim() && password.trim()) {
@@ -45,6 +48,13 @@ const LoginScreen: React.FC<AuthNavProps<"Login">> = ({ navigation }) => {
             React Native Template App
           </Text>
         </View>
+        <Button
+          onPress={() => toggleTheme()}
+          loading={isLoading}
+          disabled={isLoading}
+        >
+          {theme.dark ? "Light Mode" : "Dark Mode"}
+        </Button>
 
         <View style={styles.formContainer}>
           {error && <Text style={styles.errorText}>{error}</Text>}
