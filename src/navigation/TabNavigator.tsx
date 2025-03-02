@@ -8,6 +8,7 @@ import { useTheme } from "../hooks/useTheme";
 import ProfileScreen from "../screens/home/Profile";
 import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "../screens/home/home-styles";
+import { ToggleThemeButton } from "../components/ToggleThemeButton";
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -52,10 +53,10 @@ const TabNavigator: React.FC = () => {
                 },
               ]}
             >
+              <View></View>
               <Text style={styles.cardTitle}>Let's ship!</Text>
-              <TouchableOpacity onPress={() => alert("¡Let's go!")}>
-                <Text>🚀</Text>
-              </TouchableOpacity>
+
+              <ToggleThemeButton />
             </SafeAreaView>
           ),
         }}

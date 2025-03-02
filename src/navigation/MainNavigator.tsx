@@ -10,7 +10,7 @@ const Stack = createStackNavigator<MainParamList>();
 
 const MainNavigator: React.FC = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName={ROUTES.HOME}>
       <Stack.Screen
         name={ROUTES.HOME}
         component={TabNavigator}

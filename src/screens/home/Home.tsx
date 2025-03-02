@@ -8,7 +8,7 @@ import { useTheme } from "../../hooks/useTheme";
 const HomeScreen = () => {
   const { colors } = useTheme();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={[styles.heroTitle, { color: colors.primary }]}>
           Your Dream App Starts Here
@@ -24,8 +24,10 @@ const HomeScreen = () => {
             color={colors.primary}
             style={styles.icon}
           />
-          <Text style={styles.cardTitle}>Eye-Catching Design</Text>
-          <Text style={styles.cardText}>
+          <Text style={[styles.cardTitle, { color: colors.text }]}>
+            Eye-Catching Design
+          </Text>
+          <Text style={[styles.cardText, { color: colors.text }]}>
             Vibrant colors and sleek animations that captivate your users at
             first sight.
           </Text>
@@ -41,8 +43,10 @@ const HomeScreen = () => {
             color={colors.primary}
             style={styles.icon}
           />
-          <Text style={styles.cardTitle}>Lightning Fast</Text>
-          <Text style={styles.cardText}>
+          <Text style={[styles.cardTitle, { color: colors.text }]}>
+            Lightning Fast
+          </Text>
+          <Text style={[styles.cardText, { color: colors.text }]}>
             Get your app up and running in minutes with zero hassle.
           </Text>
           <TouchableOpacity style={styles.ctaButton}>

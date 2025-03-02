@@ -2,13 +2,9 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   header: {
-    flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
     flexDirection: "row",
-    padding: 20,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
   },
   container: {
     flex: 1,
